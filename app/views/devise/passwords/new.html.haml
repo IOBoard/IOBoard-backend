@@ -1,0 +1,8 @@
+.container
+  %h1.login-heading IOBoard
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "form-signin" }) do |f|
+    %h2.form-signin-heading Forgot Password?
+    = devise_error_messages!
+    = f.email_field :email, :autofocus => true, :class => "input-block-level", :placeholder => "email"
+    = f.submit "Reset Password", :class => "btn btn-primary"
+    = link_to "Cancel", :back, :class => "btn"

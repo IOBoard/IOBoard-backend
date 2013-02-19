@@ -1,0 +1,8 @@
+.container
+  %h1.login-heading IOBoard
+  = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => "form-signin" }) do |f|
+    %h2.form-signin-heading Resend Unlock Instructions
+    = devise_error_messages!
+    = f.email_field :email, :autofocus => true, :class => "input-block-level", :placeholder => "email"
+    = f.submit "Resend", :class => "btn btn-primary"
+    = render "devise/shared/links"

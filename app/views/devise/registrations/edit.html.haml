@@ -1,0 +1,14 @@
+.container
+  %h1.login-heading IOBoard
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-signin" }) do |f|
+    %h2.form-signin-heading Edit Account
+    = devise_error_messages!
+    = f.email_field :email, :autofocus => true, :class => "input-block-level", :placeholder => "email"
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.password_field :password, :class => "input-block-level", :placeholder => "new password"
+    = f.password_field :password_confirmation, :class => "input-block-level", :placeholder => "...and again"
+    = f.password_field :current_password, :class => "input-block-level", :placeholder => "current password"
+    = f.submit "Update", :class => "btn btn-primary"
+    = link_to "Cancel", :back, :class => "btn"
