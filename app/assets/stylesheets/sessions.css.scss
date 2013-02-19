@@ -22,16 +22,12 @@ body {
   margin-bottom: 10px;
 }
 .form-signin input[type="text"],
-.form-signin input[type="password"] {
+.form-signin input[type="password"],
+.form-signin input[type="email"] {
   font-size: 16px;
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
-}
-
-.form-signin .input-block-level {
-  font-size: 14px;
-  height: 36px;
 }
 
 .login-heading {
