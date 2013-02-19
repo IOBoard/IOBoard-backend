@@ -12,10 +12,26 @@ class User < ActiveRecord::Base
   validate :mode_is_valid
   validates_presence_of :mode
 
-  MODES = [:available, :busy, :away]
+  MODES = %w[available busy away]
 
   def mode_is_valid
     errors.add :mode, "must be a valid status: " + MODES.to_s unless
-        MODES.include? mode
+        MODES.include? self.mode
+  end
+
+  def mode= new_mode
+    write_attribute :mode, new_mode
+    write_attribute :mode_updated_at, Time.now
+  end
+
+  def status= new_status
+    write_attribute :status, new_status
+    write_attribute :status_updated_at, Time.now
+  end
+
+  before_validation do |user|
+    if user.mode.nil?
+      user.mode = "away"
+    end
   end
 end
